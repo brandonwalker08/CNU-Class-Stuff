@@ -31,22 +31,22 @@ struct uniqueWord{
 
 //TODO add a global array of entry structs (global to this file)
 
-uniqueWord wordArray[100];  //*don't know size of file yet, dummy number*
-
+uniqueWord wordArray[100];  //$don't know size of file yet, dummy number$
 
 //TODO add variable to keep track of next available slot in array
 
+int nextIndex = 0;
+
 //TODO define all functions in header file
 
+//done
 
 //zero out array that tracks words and their occurrences
 
-//*set string value to "" and int value to 0*
 void clearArray(){
-	for(int i = 0; i < sizeof(wordArray); i++){
-		wordArray[i].wordValue    = "";
-		wordArray[i].numOccurences = 0;
-	}
+
+	//$just set next index to 0$
+	nextIndex = 0;
 
 }
 
@@ -72,16 +72,25 @@ bool processFile(std::fstream &myfstream){
 
 }
 
+/*Keep track of how many times each token seen*/
+void processToken(std::string &token){
+	std::cout << token ;
+}
+
+
 /*take 1 line and extract all the tokens from it
 feed each token to processToken for recording*/
 void processLine(std::string &myString){
 
+	std::stringstream ss(myString);
+
+	std::string tempToken;
+
+	while (getline(ss, tempToken, constants::CHAR_TO_SEARCH_FOR)) {
+		processToken(tempToken);
+	}
 }
 
-/*Keep track of how many times each token seen*/
-void processToken(std::string &token){
-
-}
 
 /*if you are debugging the file must be in the project parent directory
   in this case Project2 with the .project and .cProject files*/
