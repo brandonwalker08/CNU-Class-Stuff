@@ -24,11 +24,15 @@
 //============================================================================
 //TODO define a structure to track words and number of times they occur
 
-//std::string wordList[100];
-//int         wordOccurences[100];
-//int         numWords = sizeof(wordList);
+struct uniqueWord{
+	std::string wordValue;
+	int numOccurences;
+};
 
 //TODO add a global array of entry structs (global to this file)
+
+uniqueWord wordArray[100];  //*don't know size of file yet, dummy number*
+
 
 //TODO add variable to keep track of next available slot in array
 
@@ -36,25 +40,28 @@
 
 
 //zero out array that tracks words and their occurrences
+
+//*set string value to "" and int value to 0*
 void clearArray(){
-//	for(int i = 0; i < numWords; i++){
-//		wordList[i].clear();
-//	}
+	for(int i = 0; i < sizeof(wordArray); i++){
+		wordArray[i].wordValue    = "";
+		wordArray[i].numOccurences = 0;
+	}
 
 }
 
 //how many unique words are in array
 int getArraySize(){
-//	return numWords;
+	return sizeof(wordArray);
 }
 
 //get data at a particular location
 std::string getArrayWordAt(int i){
-//	return wordList[i];
+	return wordArray[i].wordValue;
 }
 
 int getArrayWord_NumbOccur_At(int i){
-//	return wordOccurences[i];
+	return wordArray[i].numOccurences;
 }
 
 /*loop through whole file, one line at a time
